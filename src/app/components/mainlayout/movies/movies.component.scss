@@ -1,0 +1,12 @@
+.cardItems{
+    transition: 1s all;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+.spinner{
+    margin-top: 30vh;
+    margin-left: 50%;
+    font-size: 20px;
+
+}

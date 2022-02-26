@@ -1,0 +1,33 @@
+<div class="row mt-4 ">
+  <div class="col-md-12">
+    <input class="form-control me-2 w-25 mb-2 d-block" #input name="input" [(ngModel)]="searchh" type="search" placeholder="Search Movies" aria-label="Search">
+  </div>
+    
+
+  <div class="col-6 mt-2 col-md-3 overflow-hidden" *ngFor="let item of movie,let i=index">
+    <div class="card overflow-hidden shadow" style="width: 18rem;cursor: pointer;">
+      <img src="https://image.tmdb.org/t/p/w500/{{item.poster_path}}" class="card-img-top cardItems h-25"
+        *ngIf="item.id" style="height: 250px;" [routerLink]="['/detail', item.id]">
+      <hr style="width: 90%;margin: auto;">
+      <div class="card-body">
+     
+        <i class="fa fa-star-o" *ngIf="added[i]!=item&&isUser" (click)="addToFavour(item,i)" aria-hidden="true"></i>
+        <i class="fa fa-star text-warning" *ngIf="added[i]==item&&isUser" (click)="removeFromFavour(item.id,i)"
+          aria-hidden="true"></i>
+        
+        <h1 class="h-10">{{item.title}}</h1>
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-11 col-10 mb-2 mt-2">
+    <button class="btn btn-danger" (click)="backPage()">Back</button>
+  </div>
+  <div class="col-md-1 col-2 mb-2 mt-2">
+    <button class="btn btn-success" (click)="nextPage()">Next</button>
+  </div>
+</div>
+<div class="spinner-border spinner" *ngIf="isLoading" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>

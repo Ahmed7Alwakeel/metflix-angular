@@ -1,0 +1,24 @@
+<div class="row mt-4 ">
+    <div class="col-12" *ngIf="favouriteMovies.length==0">
+        <h1 class="text-center">List Empty</h1>
+      </div>
+  <div class="col-6 mt-2 col-md-3 overflow-hidden" *ngFor="let item of favouriteMovies,let i=index">
+    <div class="card overflow-hidden shadow" style="width: 18rem;cursor: pointer;">
+      <img src="https://image.tmdb.org/t/p/w500/{{item.poster_path}}" class="card-img-top cardItems h-50"
+        *ngIf="item.id" style="height: 250px;" [routerLink]="['/detail', item.id]">
+      <hr style="width: 90%;margin: auto;">
+      <div class="card-body">
+        <!-- <i class="fa" [class.fa-star-o]="!isFavour&&added!=i&&!done"  aria-hidden="true" (click)="addToFavour(item,i)"></i> -->
+
+
+        <i class="fa fa-trash text-danger" (click)="removeFromFavour(item.id,i)" aria-hidden="true"></i>
+
+        <h1 class="h-10">{{item.title}}</h1>
+
+        <div>
+        </div>
+      </div>
+    </div>
+  
+        
+     
